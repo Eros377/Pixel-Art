@@ -1,0 +1,81 @@
+:root{
+    --fondoPrincipal: #1f1f1f;
+    --UI: #333333;
+    --InputHover: #7e8083;
+    --btn:#424242;
+    --white: #ffffff;
+}
+*, *::before, *::after{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body {
+    background-color:var(--fondoPrincipal);
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns:15% 85%;
+    grid-template-rows:10% 90%;
+    
+}
+.UI, .UI2{
+    padding:20px;
+}
+.UI{
+    background-color:var(--UI);
+    grid-column:1/3;
+    grid-row:1/2;
+    border-bottom:3px solid var(--fondoPrincipal);
+}
+.UI input{
+    padding:10px;
+    color:var(--white);
+    border:1px solid var(--white);
+    background-color: var(--btn);
+    border-radius:5px;
+}
+.UI input::placeholder{
+    color:var(--white);
+}
+.UiHerramientas{
+    grid-column:1/2;
+    grid-row:2/3;
+    background-color:var(--UI);
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows:repeat(12,1fr);
+}
+.UiHerramientas input{
+    width:100%;
+    height:100%;
+    color:var(--white);
+    background-color:var(--UI);
+    border:0px;
+}
+.UiHerramientas div{
+    width:100%;
+    height:100%;
+    color:var(--white);
+    background-color:var(--UI);
+    border:0px;
+}
+.UiHerramientas div:hover{
+    background-color:var(--InputHover);
+}
+.limiteVision{
+    grid-column:2/3;
+    grid-row:2/3;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    overflow:scroll;
+    
+}
+.limiteVision canvas{
+    position:absolute;
+}
+/*#pintar {
+    border: 1px solid rgb(190, 28, 28);
+}*/
