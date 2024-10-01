@@ -4,43 +4,49 @@
     --InputHover: #7e8083;
     --btn:#424242;
     --white: #ffffff;
+    --fontPrincipal:Arial, Helvetica, sans-serif;
+}
+html{
+    font-size:62.5%;
+    box-sizing:border-box;
 }
 *, *::before, *::after{
     margin:0;
     padding:0;
-    box-sizing: border-box;
+    box-sizing:inherit;
 }
 body {
-    background-color:var(--fondoPrincipal);
+    overflow:hidden;
     width: 100%;
     height: 100vh;
     display: grid;
-    grid-template-columns:15% 85%;
-    grid-template-rows:10% 90%;
-    
-}
-.UI, .UI2{
-    padding:20px;
+    grid-template-columns:repeat(12,1fr);
+    grid-template-rows:repeat(12,1fr);
+    font-size:1.5rem;
+    font-family:var(--fontPrincipal);
+    background-color:var(--fondoPrincipal);
 }
 .UI{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    grid-template-columns:repeat(4,1fr);
+    grid-template-rows:repeat(2,1fr);
     background-color:var(--UI);
-    grid-column:1/3;
+    grid-column:1/13;
     grid-row:1/2;
-    border-bottom:3px solid var(--fondoPrincipal);
+    border-bottom:0.3rem solid var(--fondoPrincipal);
 }
 .UI input{
-    padding:10px;
-    color:var(--white);
-    border:1px solid var(--white);
-    background-color: var(--btn);
-    border-radius:5px;
-}
-.UI input::placeholder{
-    color:var(--white);
+
+    margin:0 1rem;
+    padding:1rem;
+    border:0.1rem solid var(--white);
+    border-radius:0.5rem;
 }
 .UiHerramientas{
     grid-column:1/2;
-    grid-row:2/3;
+    grid-row:2/13;
     background-color:var(--UI);
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -51,21 +57,24 @@ body {
     height:100%;
     color:var(--white);
     background-color:var(--UI);
-    border:0px;
+    border:0;
 }
 .UiHerramientas div{
+    display:flex;
+    justify-content:center;
+    align-items:center;
     width:100%;
     height:100%;
     color:var(--white);
     background-color:var(--UI);
-    border:0px;
+    border:0;
 }
 .UiHerramientas div:hover{
     background-color:var(--InputHover);
 }
 .limiteVision{
-    grid-column:2/3;
-    grid-row:2/3;
+    grid-column:2/13;
+    grid-row:2/13;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -76,6 +85,28 @@ body {
 .limiteVision canvas{
     position:absolute;
 }
-/*#pintar {
-    border: 1px solid rgb(190, 28, 28);
-}*/
+
+@media (max-width: 480px) {
+    .UI{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        grid-template-rows:repeat(2,1fr);
+        grid-column:1/13;
+        grid-row:1/2;
+    }
+    .UI input{
+        margin:0;
+        padding:1rem;
+        border:0.1rem solid var(--white);
+        border-radius:0.5rem;
+    }
+    .UiHerramientas{
+        grid-template-rows:repeat(2,1fr);
+        grid-column:1/13;
+        grid-row:2/3;
+    }
+    .limiteVision{
+        grid-column:1/13;
+        grid-row:3/13;
+    }
+}
