@@ -1,23 +1,25 @@
 :root{
-    --fondoPrincipal: #1f1f1f;
-    --UI: #333333;
-    --InputHover: #7e8083;
-    --btn:#424242;
+    --fontSecundario: Arial, Helvetica, sans-serif;
+    --fontPrincipal: "Atomic Age", system-ui;
+    --fondoPrincipal: #131313;
+    --UI: #242424;
+    --InputHover: #999999;
+    --btn:#616161;
     --white: #ffffff;
-    --fontPrincipal:Arial, Helvetica, sans-serif;
 }
 html{
     font-size:62.5%;
     box-sizing:border-box;
 }
 *, *::before, *::after{
-    margin:0;
-    padding:0;
-    box-sizing:inherit;
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+    font-weight: 400;
+    font-style: normal;
 }
 body {
     overflow:hidden;
-    width: 100%;
     height: 100vh;
     display: grid;
     grid-template-columns:repeat(12,1fr);
@@ -32,17 +34,38 @@ body {
     align-items:center;
     grid-template-columns:repeat(4,1fr);
     grid-template-rows:repeat(2,1fr);
+    
     background-color:var(--UI);
     grid-column:1/13;
     grid-row:1/2;
-    border-bottom:0.3rem solid var(--fondoPrincipal);
+    border:0.3rem solid var(--fondoPrincipal);
 }
 .UI input{
-
     margin:0 1rem;
     padding:1rem;
     border:0.1rem solid var(--white);
-    border-radius:0.5rem;
+    border-radius:0.2rem;
+    outline:none;
+}
+.UI input::placeholder{
+    color:black;
+}
+.UI button{
+    padding:0.4rem;
+    border-radius:0.2rem;
+    border:0;
+    background-color: #008fe2;
+}
+.UI button:active, #btnModificar:active{
+    transform:scale(1.1);
+}
+.UI button svg{
+    color:white;
+}
+#btnModificar{
+    background-color: #008fe2;
+    border:0;
+    color:var(--white);
 }
 .UiHerramientas{
     grid-column:1/2;
@@ -51,10 +74,10 @@ body {
     display:grid;
     grid-template-columns:repeat(2,1fr);
     grid-template-rows:repeat(12,1fr);
+    border:0.3rem solid var(--fondoPrincipal);
 }
-.UiHerramientas input{
-    width:100%;
-    height:100%;
+#seleccionarColor{
+    height:80%;
     color:var(--white);
     background-color:var(--UI);
     border:0;
@@ -82,10 +105,20 @@ body {
     overflow:scroll;
     
 }
+.limiteVision::-webkit-scrollbar{
+    width: 1rem;
+  height: 1rem
+}
+.limiteVision::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 0.2rem;
+}
+.limiteVision::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 .limiteVision canvas{
     position:absolute;
 }
-
 @media (max-width: 480px) {
     .UI{
         display:grid;

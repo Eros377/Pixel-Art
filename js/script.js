@@ -1,15 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
     let casillasPintadas = [];
-    //General
     let canvas = document.getElementById('canvas');
     let ctx = canvas.getContext('2d');
     let pintar = document.getElementById('pintar');
     let ctxPintar = pintar.getContext('2d');
     let anchoCasilla, altoCasilla, ancho, alto, pixelTamanio;
-    //herramientas
+
     let modoPintar = true;
     let modoBorrado = false;
-    //inputs
+
     let numAncho = document.getElementById('txtAncho');
     let numAlto = document.getElementById('txtAlto');
     let btnModificar = document.getElementById('btnModificar');
@@ -23,9 +22,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.addEventListener('wheel', function (event) {
         if (event.deltaY < 0) {
-            pixelTamanio = Math.min(pixelTamanio + 1, 50); //tamaño maximo de celda
+            pixelTamanio = Math.min(pixelTamanio + 1, 50);
         } else {
-            pixelTamanio = Math.max(pixelTamanio - 1, 5); //tamaño minimo de celda
+            pixelTamanio = Math.max(pixelTamanio - 1, 5); 
         }
         tamanioLienzo();
     });
@@ -87,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function () {
             ctxPintar.fillRect(casilla.x * anchoCasilla, casilla.y * altoCasilla, anchoCasilla, altoCasilla);
         }
     }
-    //pincel herramientas y si hace click
         
     btnModoBorrado.addEventListener('click', function(){
         modoPintar = false;
@@ -112,23 +110,20 @@ document.addEventListener('DOMContentLoaded', function () {
         if(modoPintar == true){
             ctxPintar.fillStyle = color;
             ctxPintar.fillRect(x * anchoCasilla, y * altoCasilla, anchoCasilla , altoCasilla);
-    
-            //guardamos la ubicacion y el color de la casilla
+
             casillasPintadas.push({ x: x, y: y, color: color });
             console.log(casillasPintadas);
         }
         if(modoBorrado == true){
             ctxPintar.clearRect(x * anchoCasilla, y * altoCasilla, anchoCasilla, altoCasilla);
 
-            //eliminamos la casilla pintada verifcando en el array si hay uno igual
+          
             casillasPintadas = casillasPintadas.filter(casilla => !(casilla.x === x && casilla.y === y));
         }
         
     });
 
-    //boton de descargar
     btnDescargar.addEventListener('click', function () {
-        //creamos un nuevo lienzo de manera temporal
         let canvasTemporal = document.createElement('canvas');
         canvasTemporal.width = ancho;
         canvasTemporal.height = alto;
@@ -137,11 +132,10 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let y = 0; y < alto; y++) {
             for (let x = 0; x < ancho; x++) {
                 ctxTemporal.fillStyle = "transparent";
-                ctxTemporal.fillRect(x, y, 1, 1); //cada casilla tendra el tamaño de un pixel
+                ctxTemporal.fillRect(x, y, 1, 1); 
             }
         }
 
-        //dibujamos las casillas pintadas en el lienzo temporal
         for (let casilla of casillasPintadas) {
             ctxTemporal.fillStyle = casilla.color;
             ctxTemporal.fillRect(casilla.x, casilla.y, 1, 1);
